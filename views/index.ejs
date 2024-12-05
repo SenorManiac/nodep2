@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Message Board</title>
+    <script>
+        const theme = localStorage.getItem('theme');
+        const themeLink = document.createElement('link');
+        themeLink.id = 'theme-link';
+        themeLink.rel = 'stylesheet';
+        themeLink.href = theme === 'dark' ? '/dark-styles.css' : '/styles.css';
+        document.head.appendChild(themeLink);
+    </script>
+    <script src="/toggle-theme.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Mini Message Board</h1>
+        <nav>
+            <a href="/new">Add a New Message</a>
+            <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <ul>
+            <% messages.forEach(message => { %>
+                <li>
+                    <strong><%= message.user %>:</strong> <%= message.text %>
+                    <br><small><%= message.added.toLocaleString() %></small>
+                </li>
+            <% }) %>
+        </ul>
+    </main>
+</body>
+</html>
