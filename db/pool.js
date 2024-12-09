@@ -7,6 +7,6 @@ const config = {
     ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 };
 
-console.log('Database configuration:', config);
+
 
 module.exports = new Pool(config);
