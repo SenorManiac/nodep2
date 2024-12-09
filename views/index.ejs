@@ -27,8 +27,9 @@
         <ul>
             <% messages.forEach(message => { %>
                 <li>
-                    <strong><%= message.user %>:</strong> <%= message.text %>
-                    <br><small><%= message.added.toLocaleString() %></small>
+                    <strong><%= message.user_name %>:</strong> <%= message.message %>
+                    <br><small><%= message.created_at %></small>
+               
                 </li>
             <% }) %>
         </ul>

@@ -1,27 +1,19 @@
 const express = require("express");
+const messageController = require("../controllers/messageController");
+
 const router = express.Router();
 
+// Route to render the main page with messages
+router.get("/", messageController.getMessages);
 
-const messages = [
-    { text: "Hello, world!", user: "John", added: new Date() },
-    { text: "Express is great!", user: "Jane", added: new Date() }
-];
+// Route to handle form submissions
+router.post("/new", messageController.addMessage);
 
-
-router.get("/", (req, res) => {
-    res.render("index", { messages });
-});
-
-
+// Route to render the "new message" form
 router.get("/new", (req, res) => {
-    res.render("form");
+    res.render("form"); // Ensure 'form.ejs' exists in 'views'
 });
 
 
-router.post("/new", (req, res) => {
-    const { user, message } = req.body;
-    messages.push({ text: message, user, added: new Date() });
-    res.redirect("/");
-});
 
 module.exports = router;
