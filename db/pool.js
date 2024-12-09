@@ -2,6 +2,8 @@ const { Pool } = require('pg');
 
 const connectionString = process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : process.env.DATABASE_PUBLIC_URL;
 
+console.log('Database configuration:', config);
+
 const config = {
     connectionString,
     ssl: {
